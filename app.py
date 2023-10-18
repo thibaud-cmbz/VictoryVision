@@ -77,7 +77,23 @@ def results():
     equipe1 = request.form.get('equipe1')
     equipe2 = request.form.get('equipe2')
     gagnant = simulate_results(equipe1, equipe2)
-    return render_template('results.html', equipe1=equipe1, equipe2=equipe2, gagnant=gagnant)
+    
+    # Calculer les pourcentages pour les deux équipes
+    pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
+    pourcentage_defaites_equipe1 = pourcentage_defaites(equipe1)
+    pourcentage_matchs_nuls_equipe1 = pourcentage_matchs_nuls(equipe1)
+
+    pourcentage_victoires_equipe2 = pourcentage_victoires(equipe2)
+    pourcentage_defaites_equipe2 = pourcentage_defaites(equipe2)
+    pourcentage_matchs_nuls_equipe2 = pourcentage_matchs_nuls(equipe2)
+
+    return render_template('results.html', equipe1=equipe1, equipe2=equipe2, gagnant=gagnant,
+                           pourcentage_victoires_equipe1=pourcentage_victoires_equipe1,
+                           pourcentage_defaites_equipe1=pourcentage_defaites_equipe1,
+                           pourcentage_matchs_nuls_equipe1=pourcentage_matchs_nuls_equipe1,
+                           pourcentage_victoires_equipe2=pourcentage_victoires_equipe2,
+                           pourcentage_defaites_equipe2=pourcentage_defaites_equipe2,
+                           pourcentage_matchs_nuls_equipe2=pourcentage_matchs_nuls_equipe2)
 
 if __name__ == '__main__':
     app.run(debug=True)

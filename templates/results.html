@@ -8,13 +8,25 @@
     <link rel="icon" href="{{ url_for('static', filename='IconWeb.png') }}" type="image/png">
 </head>
 <body>
-    <main class="container">
-        <h2>Résultats du simulateur</h2>
-        <p>Equipe 1 : {{ equipe1 }}</p>
-        <p>Equipe 2 : {{ equipe2 }}</p>
+    <main class="container2">
+        <h2 class="Titre">Résultats du simulateur</h2>
+        <div class="info">
+            <p>Equipe 1 : {{ equipe1 }}</p>
+            <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe1 }}%</p>
+            <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe1 }}%</p>
+            <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe1 }}%</p>
+        </div>
+        <div class="info2">
+            <p>Equipe 2 : {{ equipe2 }}</p>
+            <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe2 }}%</p>
+            <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe2 }}%</p>
+            <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe2 }}%</p>
+        </div>
         <p>Gagnant : {{ gagnant }}</p>
         <a href="/">Retourner à l'accueil</a>
     </main>
+    
+
     <footer>
         <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
         <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">
