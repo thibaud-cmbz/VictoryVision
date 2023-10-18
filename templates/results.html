@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='IconWeb.png') }}" type="image/png">
+</head>
+<body>
+    <main class="container">
+        <h2>Résultats du simulateur</h2>
+        <p>Equipe 1 : {{ equipe1 }}</p>
+        <p>Equipe 2 : {{ equipe2 }}</p>
+        <p>Gagnant : {{ gagnant }}</p>
+        <a href="/">Retourner à l'accueil</a>
+    </main>
+    <footer>
+        <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
+        <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">
+    </footer>
+</body>
+</html>

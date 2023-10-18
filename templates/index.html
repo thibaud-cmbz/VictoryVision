@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Vision</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='IconWeb.png') }}" type="image/png">
+</head>
+<body>
+    <main class="container">
+        <h2>Votre simulateur</h2>
+        <form method="POST" action="/results">
+            <div class="form-group">
+                <label for="equipe1">Equipe 1</label>
+                <select id="equipe1" name="equipe1">
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="France">France</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="England">England</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Wales">Wales</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="Georgia">Georgia</option>
+                </select>
+
+                <label for="equipe2">Equipe 2</label>
+                <select id="equipe2" name="equipe2">
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="France">France</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="England">England</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Wales">Wales</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="Georgia">Georgia</option>
+                </select>
+
+                <label for="meteo">Météo</label>
+                <select id="meteo" name="meteo">
+                    <option value="Pluie">Pluie</option>
+                    <option value="Beau temps">Beau temps</option>
+                    <option value="Beaucoup de vent">Beaucoup de vent</option>
+                </select>
+            </div>
+            <button type="submit">Valider</button>
+        </form>
+    </main>
+    <footer>
+        <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
+        <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">
+    </footer>
+</body>
+</html>
