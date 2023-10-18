@@ -3,12 +3,10 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Charger les données à partir des fichiers CSV
 betclic_data = pd.read_csv('./Data/BetclicScrap.csv')
 rugby_data = pd.read_csv('./Data/RugbyDataset.csv')
 zebet_data = pd.read_csv('./Data/ZebetScrap.csv')
 
-# Fonction pour calculer le pourcentage de victoires d'une équipe
 def pourcentage_victoires(equipe):
     victoires = len(rugby_data[(rugby_data['home_team'] == equipe) & (rugby_data['home_score'] > rugby_data['away_score'])])
     victoires += len(rugby_data[(rugby_data['away_team'] == equipe) & (rugby_data['away_score'] > rugby_data['home_score'])])
@@ -18,7 +16,6 @@ def pourcentage_victoires(equipe):
         return 0.0
     return (victoires / total_matchs) * 100
 
-# Fonction pour calculer le pourcentage de défaites d'une équipe
 def pourcentage_defaites(equipe):
     defaites = len(rugby_data[(rugby_data['home_team'] == equipe) & (rugby_data['home_score'] < rugby_data['away_score'])])
     defaites += len(rugby_data[(rugby_data['away_team'] == equipe) & (rugby_data['away_score'] < rugby_data['home_score'])])
@@ -28,7 +25,6 @@ def pourcentage_defaites(equipe):
         return 0.0
     return (defaites / total_matchs) * 100
 
-# Fonction pour calculer le pourcentage de matchs nuls d'une équipe
 def pourcentage_matchs_nuls(equipe):
     matchs_nuls = len(rugby_data[((rugby_data['home_team'] == equipe) | (rugby_data['away_team'] == equipe)) & (rugby_data['home_score'] == rugby_data['away_score'])])
     total_matchs = len(rugby_data[(rugby_data['home_team'] == equipe) | (rugby_data['away_team'] == equipe)])
@@ -37,7 +33,6 @@ def pourcentage_matchs_nuls(equipe):
         return 0.0
     return (matchs_nuls / total_matchs) * 100
 
-# Fonction pour simuler les résultats du match
 def simulate_results(equipe1, equipe2):
     pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
     pourcentage_defaites_equipe1 = pourcentage_defaites(equipe1)
@@ -78,7 +73,6 @@ def results():
     equipe2 = request.form.get('equipe2')
     gagnant = simulate_results(equipe1, equipe2)
     
-    # Calculer les pourcentages pour les deux équipes
     pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
     pourcentage_defaites_equipe1 = pourcentage_defaites(equipe1)
     pourcentage_matchs_nuls_equipe1 = pourcentage_matchs_nuls(equipe1)
