@@ -1,11 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import pandas as pd
 
 app = Flask(__name__)
 
-betclic_data = pd.read_csv('./Data/BetclicScrap.csv')
 rugby_data = pd.read_csv('./Data/RugbyDataset.csv')
-zebet_data = pd.read_csv('./Data/ZebetScrap.csv')
 
 def pourcentage_victoires(equipe):
     victoires = len(rugby_data[(rugby_data['home_team'] == equipe) & (rugby_data['home_score'] > rugby_data['away_score'])])
@@ -33,6 +31,10 @@ def pourcentage_matchs_nuls(equipe):
         return 0.0
     return (matchs_nuls / total_matchs) * 100
 
+def calculer_cote_theorique(pourcentage_victoires, pourcentage_defaites, pourcentage_matchs_nuls):
+    cote_theorique = 1 / (pourcentage_victoires / 100)
+    return cote_theorique
+
 def simulate_results(equipe1, equipe2):
     pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
     pourcentage_defaites_equipe1 = pourcentage_defaites(equipe1)
@@ -42,8 +44,8 @@ def simulate_results(equipe1, equipe2):
     pourcentage_defaites_equipe2 = pourcentage_defaites(equipe2)
     pourcentage_matchs_nuls_equipe2 = pourcentage_matchs_nuls(equipe2)
 
-    cote_equipe1 = float(betclic_data.loc[betclic_data['Pays 1'] == equipe1]['Cote 1'].str.replace(',', '.').values[0])
-    cote_equipe2 = float(betclic_data.loc[betclic_data['Pays 1'] == equipe2]['Cote 1'].str.replace(',', '.').values[0])
+    cote_equipe1 = calculer_cote_theorique(pourcentage_victoires_equipe1, pourcentage_defaites_equipe1, pourcentage_matchs_nuls_equipe1)
+    cote_equipe2 = calculer_cote_theorique(pourcentage_victoires_equipe2, pourcentage_defaites_equipe2, pourcentage_matchs_nuls_equipe2)
 
     proba_victoire_equipe1 = 1 / cote_equipe1
     proba_victoire_equipe2 = 1 / cote_equipe2
@@ -51,28 +53,28 @@ def simulate_results(equipe1, equipe2):
     score_equipe1 = pourcentage_victoires_equipe1 - pourcentage_defaites_equipe1 + pourcentage_matchs_nuls_equipe1
     score_equipe2 = pourcentage_victoires_equipe2 - pourcentage_defaites_equipe2 + pourcentage_matchs_nuls_equipe2
 
-    score_combine_equipe1 = score_equipe1 * proba_victoire_equipe1
-    score_combine_equipe2 = score_equipe2 * proba_victoire_equipe2
+    score_theorique_equipe1 = cote_equipe2 / (cote_equipe1 + cote_equipe2) * 100
+    score_theorique_equipe2 = cote_equipe1 / (cote_equipe1 + cote_equipe2) * 100
 
-    if score_combine_equipe1 > score_combine_equipe2:
+    if score_equipe1 > score_equipe2:
         gagnant = equipe1
-    elif score_combine_equipe2 > score_combine_equipe1:
+    elif score_equipe2 > score_equipe1:
         gagnant = equipe2
     else:
         gagnant = "Match nul"
 
-    return gagnant
+    return gagnant, cote_equipe1, cote_equipe2, score_theorique_equipe1, score_theorique_equipe2
 
 @app.route('/')
 def index():
-    return render_template('index.html') 
+    return render_template('index.html')
 
 @app.route('/results', methods=['POST'])
 def results():
     equipe1 = request.form.get('equipe1')
     equipe2 = request.form.get('equipe2')
-    gagnant = simulate_results(equipe1, equipe2)
-    
+    gagnant, cote_equipe1, cote_equipe2, score_theorique_equipe1, score_theorique_equipe2 = simulate_results(equipe1, equipe2)
+
     pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
     pourcentage_defaites_equipe1 = pourcentage_defaites(equipe1)
     pourcentage_matchs_nuls_equipe1 = pourcentage_matchs_nuls(equipe1)
@@ -87,7 +89,11 @@ def results():
                            pourcentage_matchs_nuls_equipe1=pourcentage_matchs_nuls_equipe1,
                            pourcentage_victoires_equipe2=pourcentage_victoires_equipe2,
                            pourcentage_defaites_equipe2=pourcentage_defaites_equipe2,
-                           pourcentage_matchs_nuls_equipe2=pourcentage_matchs_nuls_equipe2)
+                           pourcentage_matchs_nuls_equipe2=pourcentage_matchs_nuls_equipe2,
+                           cote_equipe1=cote_equipe1,
+                           cote_equipe2=cote_equipe2,
+                           score_theorique_equipe1=score_theorique_equipe1,
+                           score_theorique_equipe2=score_theorique_equipe2)
 
 if __name__ == '__main__':
     app.run(debug=True)

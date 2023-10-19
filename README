@@ -1,0 +1,20 @@
+# Simulateur de Résultats de Rugby
+
+Ce projet est un simulateur de résultats de matchs de rugby basé sur les données d'équipes et de cotes de paris.
+
+## Aperçu
+
+Ce simulateur vous permet de prédire le gagnant d'un match de rugby entre deux équipes en fonction de leurs performances passées et des cotes de paris associées. Il affiche également les pourcentages de victoires, de défaites et de matchs nuls pour chaque équipe.
+
+## Configuration
+
+Avant d'exécuter ce simulateur, assurez-vous que vous disposez des dépendances suivantes :
+
+- Python 3.x
+- Flask
+- pandas
+
+Pour installer les dépendances, vous pouvez utiliser `pip`. Exécutez la commande suivante :
+
+```bash
+pip install -r requirements.txt

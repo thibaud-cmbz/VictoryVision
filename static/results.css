@@ -1,0 +1,43 @@
+body {
+    font-family: "Helvetica", sans-serif;
+    background-color: white;
+    color: black;
+    overflow-x: hidden;
+}
+
+.footer {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.ImageFooter {
+    width: 170%;
+    position: absolute;
+    bottom: 0;
+    left: -15%;
+}
+
+.LogoFooter {
+    width: 7%;
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container2 {
+    text-align: center;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.percentage {
+    font-size: 14px;
+}
+
+.info, .info2 {
+    display: inline-block;
+    margin-right: 20px;
+}
