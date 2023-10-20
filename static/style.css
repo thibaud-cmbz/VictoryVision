@@ -97,7 +97,18 @@ h2 {
     font-size: 14px;
 }
 
-.info, .info2 {
-    display: inline-block;
-    margin-right: 20px;
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info1, .info2 {
+    flex: 1;
+    text-align: center;
+}
+
+/* Supprimez ou modifiez la largeur de .info si vous ne souhaitez pas centrer horizontalement les informations */
+.info {
+    text-align: center;
 }

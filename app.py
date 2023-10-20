@@ -12,7 +12,7 @@ def pourcentage_victoires(equipe):
     
     if total_matchs == 0:
         return 0.0
-    return (victoires / total_matchs) * 100
+    return round((victoires / total_matchs) * 100, 1)
 
 def pourcentage_defaites(equipe):
     defaites = len(rugby_data[(rugby_data['home_team'] == equipe) & (rugby_data['home_score'] < rugby_data['away_score'])])
@@ -21,7 +21,7 @@ def pourcentage_defaites(equipe):
     
     if total_matchs == 0:
         return 0.0
-    return (defaites / total_matchs) * 100
+    return round((defaites / total_matchs) * 100, 1)
 
 def pourcentage_matchs_nuls(equipe):
     matchs_nuls = len(rugby_data[((rugby_data['home_team'] == equipe) | (rugby_data['away_team'] == equipe)) & (rugby_data['home_score'] == rugby_data['away_score'])])
@@ -29,11 +29,11 @@ def pourcentage_matchs_nuls(equipe):
     
     if total_matchs == 0:
         return 0.0
-    return (matchs_nuls / total_matchs) * 100
+    return round((matchs_nuls / total_matchs) * 100, 1)
 
 def calculer_cote_theorique(pourcentage_victoires, pourcentage_defaites, pourcentage_matchs_nuls):
     cote_theorique = 1 / (pourcentage_victoires / 100)
-    return cote_theorique
+    return round(cote_theorique, 1)
 
 def simulate_results(equipe1, equipe2):
     pourcentage_victoires_equipe1 = pourcentage_victoires(equipe1)
@@ -53,8 +53,8 @@ def simulate_results(equipe1, equipe2):
     score_equipe1 = pourcentage_victoires_equipe1 - pourcentage_defaites_equipe1 + pourcentage_matchs_nuls_equipe1
     score_equipe2 = pourcentage_victoires_equipe2 - pourcentage_defaites_equipe2 + pourcentage_matchs_nuls_equipe2
 
-    score_theorique_equipe1 = cote_equipe2 / (cote_equipe1 + cote_equipe2) * 100
-    score_theorique_equipe2 = cote_equipe1 / (cote_equipe1 + cote_equipe2) * 100
+    score_theorique_equipe1 = round(cote_equipe2 / (cote_equipe1 + cote_equipe2) * 100, 1)
+    score_theorique_equipe2 = round(cote_equipe1 / (cote_equipe1 + cote_equipe2) * 100, 1)
 
     if score_equipe1 > score_equipe2:
         gagnant = equipe1

@@ -1,9 +1,18 @@
 body {
     font-family: "Helvetica", sans-serif;
-    background-color: white;
+    background-color: rgb(200, 187, 187);
     color: black;
     overflow-x: hidden;
 }
+
+.background-image {
+    background-image: url("{{ url_for('static', filename='Fond.png') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%; /* Ajustez ces valeurs en fonction de vos besoins */
+    height: 100%;
+}
+
 
 .footer {
     flex-grow: 1;
@@ -37,7 +46,7 @@ body {
     font-size: 14px;
 }
 
-.info, .info2 {
+.info1, .info2 {
     display: inline-block;
     margin-right: 20px;
 }

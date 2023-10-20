@@ -7,33 +7,29 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='results.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='IconWeb.png') }}" type="image/png">
 </head>
-<body>
+<body class="background-image">
     <main class="container2">
         <h2 class="Titre">Résultats du simulateur</h2>
         <div class="info">
-            <p>Equipe 1 : {{ equipe1 }}</p>
-            <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe1 }}%</p>
-            <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe1 }}%</p>
-            <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe1 }}%</p>
-            <p>Cote théorique : {{ cote_equipe1 }}</p>
-            <p>Score Théorique de {{ equipe1 }} par rapport à {{ equipe2 }} : {{ score_theorique_equipe1 }}</p>
+            <div class="info1">
+                <h3>Equipe 1 : {{ equipe1 }}</h3>
+                <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe1 }}%</p>
+                <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe1 }}%</p>
+                <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe1 }}%</p>
+                <p>Cote théorique : {{ cote_equipe1 }}</p>
+                <p>Score Théorique de {{ equipe1 }} par rapport à {{ equipe2 }} : {{ score_theorique_equipe1 }}</p>
+            </div>
+            <div class="info2">
+                <h3>Equipe 2 : {{ equipe2 }}</h3>
+                <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe2 }}%</p>
+                <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe2 }}%</p>
+                <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe2 }}%</p>
+                <p>Cote théorique pour : {{ cote_equipe2 }}</p>
+                <p>Score Théorique de {{ equipe2 }} par rapport à {{ equipe1 }} : {{ score_theorique_equipe2 }}</p>
+            </div>
         </div>
-        <div class="info2">
-            <p>Equipe 2 : {{ equipe2 }}</p>
-            <p class="percentage">Pourcentage de victoires : {{ pourcentage_victoires_equipe2 }}%</p>
-            <p class="percentage">Pourcentage de défaites : {{ pourcentage_defaites_equipe2 }}%</p>
-            <p class="percentage">Pourcentage de matchs nuls : {{ pourcentage_matchs_nuls_equipe2 }}%</p>
-            <p>Cote théorique pour : {{ cote_equipe2 }}</p>
-            <p>Score Théorique de {{ equipe2 }} par rapport à {{ equipe1 }} : {{ score_theorique_equipe2 }}</p>
-        </div>
-        <p>Gagnant par rapport aux cotes et aux pourcentages : {{ gagnant }}</p>
+        <p>Gagnant : {{ gagnant }}</p>
         <a href="/">Retourner à l'accueil</a>
     </main>
-    
-
-    <footer>
-        <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
-        <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">
-    </footer>
 </body>
 </html>
