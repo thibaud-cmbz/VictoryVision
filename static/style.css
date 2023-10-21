@@ -112,3 +112,20 @@ h2 {
 .info {
     text-align: center;
 }
+
+.btn-return {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;  /* Couleur bleue pour le fond du bouton */
+    color: white;               /* Texte blanc pour le bouton */
+    border-radius: 5px;         /* Coins arrondis pour le bouton */
+    text-decoration: none;      /* Enlever le soulignement du lien */
+    font-weight: bold;          /* Texte en gras */
+    margin-top: 10px;           /* Espacement en haut pour le démarquer des autres éléments */
+    transition: background-color 0.3s;  /* Transition douce pour le survol */
+}
+
+.btn-return:hover {
+    background-color: #0056b3;  /* Couleur légèrement plus foncée pour l'effet de survol */
+}
+
