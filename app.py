@@ -153,5 +153,95 @@ def predict():
         return render_template('error.html')
 
 
+
+@app.route('/Tournoi', methods=['GET', 'POST'])
+@app.route('/ResultTournoi', methods=['GET', 'POST'])
+def tournament_simulation():
+    if request.method == "POST":
+      
+        try:
+            precipitation_min = float(request.form.get('precipitation-debut'))
+        except (ValueError, TypeError):
+            precipitation_min = 0.0
+
+        try:
+            precipitation_max = float(request.form.get('precipitation-fin'))
+        except (ValueError, TypeError):
+            precipitation_max = float('inf')
+
+        filtered_team_rugby = team_rugby[(team_rugby['precipitation_mm'] >= precipitation_min) & 
+                                         (team_rugby['precipitation_mm'] <= precipitation_max)]
+        
+        temperature_range = request.form.get('meteo')
+        if temperature_range == "moins0":
+            filtered_team_rugby = filtered_team_rugby[filtered_team_rugby['TranchTemp'] == "moins de 0"]
+        elif temperature_range == "0-20":
+            filtered_team_rugby = filtered_team_rugby[(filtered_team_rugby['TranchTemp'] == "0-20") | 
+                                                      (filtered_team_rugby['TranchTemp'] == "no data")]
+        elif temperature_range == "20-30":
+            filtered_team_rugby = filtered_team_rugby[filtered_team_rugby['TranchTemp'] == "20-30"]
+
+        wind_range = request.form.get('wind')
+        if wind_range == "moins30":
+            filtered_team_rugby = filtered_team_rugby[(filtered_team_rugby['TranchWind'] == "moins de 30") | 
+                                                      (filtered_team_rugby['TranchWind'] == "no data")]
+        elif wind_range == "30-60":
+            filtered_team_rugby = filtered_team_rugby[filtered_team_rugby['TranchWind'] == "30-60"]
+        
+        
+        tournament_results = round_robin_simulation(filtered_team_rugby)
+        
+        return render_template('ResultTournoi.html', results=tournament_results)
+    
+    return render_template('Tournoi.html')
+
+
+def round_robin_simulation(dataframe):
+    team_points = {team: 0 for team in teams}
+    for i in range(len(teams)):
+        for j in range(i+1, len(teams)):
+            team1 = teams[i]
+            team2 = teams[j]
+
+            results = calculate_percentage_chances(team1, team2, dataframe)
+            
+            if results['team1'] > results['team2']:
+                team_points[team1] += 3
+            elif results['team1'] < results['team2']:
+                team_points[team2] += 3
+            else:
+                team_points[team1] += 1
+                team_points[team2] += 1
+                
+    
+    sorted_teams = sorted(team_points, key=team_points.get, reverse=True)
+
+    for i in range(len(sorted_teams) - 1):
+        if team_points[sorted_teams[i]] == team_points[sorted_teams[i+1]]:
+            results = calculate_percentage_chances(sorted_teams[i], sorted_teams[i+1], dataframe)
+            if results['team1'] < results['team2']:
+                sorted_teams[i], sorted_teams[i+1] = sorted_teams[i+1], sorted_teams[i]
+
+   
+    results = {}
+    total_points = sum(team_points.values())
+    for team in sorted_teams:
+        prob_of_winning = team_points[team] / total_points
+        avg_tries = average_tries_scored(team, dataframe)
+        cote = 1 / prob_of_winning if prob_of_winning != 0 else float('inf')
+        
+        
+        results[team] = {
+            "points": team_points[team],
+            "probability": prob_of_winning,
+            "avg_tries": avg_tries,
+            "cote": cote
+        }
+    
+    return results
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,131 +1,82 @@
-body {
-    font-family: "Helvetica", sans-serif;
-    background-color: white;
-    color: black;
+/* Réinitialisation */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Gris clair */
+    color: #333; /* Gris foncé */
 }
 
 .container {
-    max-width: 800px;
-    margin: 250px auto;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    margin-top: 0;
-}
-
-
-.form-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 20px 0;
-    align-items: center;
-}
-
-select {
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 15px;
-    margin: 10px 0;
-    vertical-align: middle;
-}
-
-.form-group select {
-    margin-right: 80px;
-}
-
-
-button {
-    font-size: 18px;
-    padding: 15px 40px;
-    background-color: #2D3CFF;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    margin: 20px 0;
+    width: 80%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff; /* Blanc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 70px;
-    font-size: 65px;
+    color: #0033A0; /* Bleu */
+    margin-bottom: 1rem;
 }
 
-.footer {
-    flex-grow: 1;
-    position: relative;
-    overflow: hidden;
-}
-
-.ImageFooter {
-    width: 170%;
-    position: absolute;
-    bottom: 0;
-    left: -15%;
-}
-
-.LogoFooter {
-    width: 7%;
-    position: absolute;
-    top: 82%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.container2 {
-    text-align: center;
-    max-width: 800px;
-    margin: 0px auto;
-    padding: 20px;
-}
-
-.Titre {
-    font-size: 24px;
-}
-
-
-.percentage {
-    font-size: 14px;
-}
-
-
-.info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.info1, .info2 {
-    flex: 1;
-    text-align: center;
-}
-
-/* Supprimez ou modifiez la largeur de .info si vous ne souhaitez pas centrer horizontalement les informations */
-.info {
-    text-align: center;
-}
-
-.btn-return {
+a.tournoi-btn {
     display: inline-block;
+    background-color: #d52d27; /* Rouge */
+    color: #fff;
     padding: 10px 20px;
-    background-color: #007BFF;  /* Couleur bleue pour le fond du bouton */
-    color: white;               /* Texte blanc pour le bouton */
-    border-radius: 5px;         /* Coins arrondis pour le bouton */
-    text-decoration: none;      /* Enlever le soulignement du lien */
-    font-weight: bold;          /* Texte en gras */
-    margin-top: 10px;           /* Espacement en haut pour le démarquer des autres éléments */
-    transition: background-color 0.3s;  /* Transition douce pour le survol */
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.btn-return:hover {
-    background-color: #0056b3;  /* Couleur légèrement plus foncée pour l'effet de survol */
+a.tournoi-btn:hover {
+    background-color: #b02320;
 }
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #0033A0; /* Bleu */
+}
+
+select, 
+input[type="number"],
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #0033A0; /* Bleu */
+    color: #ffffff; /* Blanc */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d52d27; /* Rouge */
+}
+
+footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    background-color: #0033A0; /* Bleu */
+    padding: 1rem 0;
+}
+
+
 

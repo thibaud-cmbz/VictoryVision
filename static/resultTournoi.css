@@ -40,11 +40,13 @@ body {
 }
 
 .container2 {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 1rem auto;
     padding: 2rem;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;  /* au cas où le contenu dépasse */
+    max-height: 80vh;  /* adapté pour laisser de l'espace pour le bouton et le footer */
 }
 
 .Titre {
@@ -53,28 +55,11 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.info {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.info1, .info2 {
-    flex: 1;
-    min-width: 45%; /* Cette valeur dépend de la largeur de votre conteneur et des marges/paddings */
-    background-color: #F1F1F1; /* Un fond légèrement plus clair pour distinguer les blocs d'information */
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-h3 {
+h2 {
     color: #0033A0;
-    margin-bottom: 1rem;
-}
-
-.percentage {
-    color: #d52d27; /* Rouge */
+    margin-top: 2rem;
+    border-bottom: 2px solid #0033A0; /* Une ligne sous chaque titre d'équipe pour les séparer visuellement */
+    padding-bottom: 1rem;
 }
 
 footer {
@@ -85,7 +70,8 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    .info {
-        flex-direction: column;
+    .container2 {
+        max-width: 90%;
+        padding: 1rem;
     }
 }

@@ -9,6 +9,8 @@
 </head>
 <body>
     <main class="container">
+        <a href="/Tournoi" class="tournoi-btn">Simulation Tournoi</a>
+
         <h2>Votre simulateur</h2>
         <form method="POST" action="/results">
             <div class="form-group">
@@ -22,7 +24,7 @@
                     <option value="Wales">Wales</option>
                     <option value="South Africa">South Africa</option>
                     <option value="Argentina">Argentina</option>
-                    <option value="Portugal">Portugal</option>
+                    <option value="Italy">Italie</option>
                     <option value="Australia">Australia</option>
                 </select>
 
@@ -34,7 +36,7 @@
                     <option value="England">England</option>
                     <option value="Ireland">Ireland</option>
                   
-                    
+                    <option value="Italy">Italie</option>
                   
                     <option value="Wales">Wales</option>
                     <option value="South Africa">South Africa</option>
@@ -71,8 +73,7 @@
         </form>
     </main>
     <footer>
-        <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
-        <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">
+  
     </footer>
 </body>
 </html>
