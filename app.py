@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-rugby_data = pd.read_csv('./Data/RugbyDataset.csv')
+
 team_rugby = pd.read_csv('./Data/TeamRugby.csv')
 betclic_scrap_fix = pd.read_csv('./Data/BetClicScrapFix.csv')
 
