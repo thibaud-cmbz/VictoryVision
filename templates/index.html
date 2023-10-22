@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victory Vision</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap');
+      </style>
     <link rel="icon" href="{{ url_for('static', filename='IconWeb.png') }}" type="image/png">
 </head>
 <body>
+    <body class="background-image"></body>
     <main class="container">
-        <h2>Votre simulateur</h2>
+        <h2>À vos jeux !</h2>
         <form method="POST" action="/results">
             <div class="form-group">
-                <label for="equipe1">Equipe 1</label>
+                <label for="equipe1">Team 1</label>
                 <select id="equipe1" name="equipe1">
                     <option value="New Zealand">New Zealand</option>
                     <option value="France">France</option>
@@ -26,7 +30,7 @@
                     <option value="Australia">Australia</option>
                 </select>
 
-                <label for="equipe2">Equipe 2</label>
+                <label for="equipe2">Team 2</label>
                 <select id="equipe2" name="equipe2">
                     <option value="New Zealand">New Zealand</option>
                     <option value="France">France</option>
@@ -70,6 +74,7 @@
             <button type="submit">Valider</button>
         </form>
     </main>
+
     <footer>
         <img class="ImageFooter" src="{{ url_for('static', filename='blue-shape.svg') }}" alt="Image du Footer">
         <img class="LogoFooter" src="{{ url_for('static', filename='LogoRugby.svg') }}" alt="Logo du Footer">

@@ -1,18 +1,17 @@
 body {
-    font-family: "Helvetica", sans-serif;
+    font-family: "Mukta", sans-serif;
     background-color: rgb(255, 255, 255);
     color: black;
     overflow-x: hidden;
 }
 
 .background-image {
-    background-image: url("{{ url_for('static', filename='Fond.png') }}");
+    background-image: url('../static/Fond.png') ;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100%; /* Ajustez ces valeurs en fonction de vos besoins */
+    width: 100%;
     height: 100%;
 }
-
 
 .footer {
     flex-grow: 1;
@@ -40,6 +39,9 @@ body {
     max-width: 800px;
     margin: 60px auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Ajoute un fond blanc semi-transparent */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
 }
 
 .percentage {
@@ -49,4 +51,20 @@ body {
 .info1, .info2 {
     display: inline-block;
     margin-right: 20px;
+}
+.btn-return {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2D3CFF;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.5s ease-in-out;
+}
+
+.btn-return:hover {
+    background-color: red;
+    transform: scale(1.05);
 }

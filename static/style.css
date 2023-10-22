@@ -1,7 +1,7 @@
-body {
-    font-family: "Helvetica", sans-serif;
-    background-color: white;
-    color: black;
+
+ body {
+    font-family: "Mukta", sans-serif;
+    color: #000000;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,15 +12,21 @@ body {
     overflow-x: hidden;
 }
 
+.background-image {
+    background-image: url('../static/Fond.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 10%;
+}
+
 .container {
     max-width: 800px;
-    margin: 250px auto;
+    margin: 50px auto; /* Réduit la marge pour centrer le contenu */
     padding: 20px;
     text-align: center;
     font-size: 24px;
-    margin-top: 0;
 }
-
 
 .form-group {
     display: flex;
@@ -30,8 +36,13 @@ body {
     align-items: center;
 }
 
-select {
-    font-size: 18px;
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select, input[type="number"] {
+    font-size: 16px; /* Réduit la taille de la police pour les éléments de formulaire */
     padding: 10px;
     border-radius: 15px;
     margin: 10px 0;
@@ -39,9 +50,8 @@ select {
 }
 
 .form-group select {
-    margin-right: 80px;
+    margin-right: 30px; /* Réduit l'espacement entre les sélections */
 }
-
 
 button {
     font-size: 18px;
@@ -51,13 +61,18 @@ button {
     border: none;
     border-radius: 25px;
     margin: 20px 0;
+    cursor: pointer;
 }
 
 h2 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 70px;
-    font-size: 65px;
+    margin-top: -150px;
+    margin-bottom: 30px; 
+    font-size: 50px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: black; 
+    padding: 15px; 
+    border-radius: 10px;
 }
 
 .footer {
@@ -67,65 +82,34 @@ h2 {
 }
 
 .ImageFooter {
-    width: 170%;
+    width: 130%;
     position: absolute;
     bottom: 0;
-    left: -15%;
+    left: 0;
+    z-index: -1; /* Déplace l'image derrière le contenu */
 }
 
 .LogoFooter {
-    width: 7%;
+    width: 100px;
     position: absolute;
-    top: 82%;
+    bottom: 10px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-80%);
 }
 
-.container2 {
-    text-align: center;
-    max-width: 800px;
-    margin: 0px auto;
-    padding: 20px;
+/* Styles pour les éléments du formulaire */
+label[for="precipitation-debut"], label[for="precipitation-fin"] {
+    display: lin;
+    margin-top: 10px;
 }
 
-.Titre {
-    font-size: 24px;
+/* Styles pour le bouton de validation */
+button[type="submit"] {
+    background-color: blue; /* Couleur de fond mise à jour */
 }
 
-
-.percentage {
-    font-size: 14px;
-}
-
-
-.info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.info1, .info2 {
-    flex: 1;
-    text-align: center;
-}
-
-/* Supprimez ou modifiez la largeur de .info si vous ne souhaitez pas centrer horizontalement les informations */
-.info {
-    text-align: center;
-}
-
-.btn-return {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;  /* Couleur bleue pour le fond du bouton */
-    color: white;               /* Texte blanc pour le bouton */
-    border-radius: 5px;         /* Coins arrondis pour le bouton */
-    text-decoration: none;      /* Enlever le soulignement du lien */
-    font-weight: bold;          /* Texte en gras */
-    margin-top: 10px;           /* Espacement en haut pour le démarquer des autres éléments */
-    transition: background-color 0.3s;  /* Transition douce pour le survol */
-}
-
-.btn-return:hover {
-    background-color: #0056b3;  /* Couleur légèrement plus foncée pour l'effet de survol */
+button[type="submit"]:hover {
+    background-color: red;
+    transform: scale(1.05);
 }
 
